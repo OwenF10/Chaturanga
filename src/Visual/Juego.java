@@ -80,7 +80,12 @@ public class Juego extends javax.swing.JPanel {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:  
         //Menu.cha.surrender(Menu.tablero.t);
-        Menu.menu.setPanel(new MenuPrincipal());
+        try{
+        int confirm = JOptionPane.showConfirmDialog(Menu.menu, "Seguro?", "Retirar",JOptionPane.YES_NO_CANCEL_OPTION);
+        if(confirm==JOptionPane.YES_OPTION){
+            Menu.menu.setPanel(new MenuPrincipal());
+        }
+        }catch(Exception e){}
     }//GEN-LAST:event_jButton1MouseClicked
 
 

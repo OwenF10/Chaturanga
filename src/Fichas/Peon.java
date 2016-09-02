@@ -16,7 +16,12 @@ public class Peon extends Ficha{
 
     @Override
     public boolean validarMove(int x, int y, int x1, int y1) {
-        return ((x==x1 && y+1==y1) || (x==x1 && y-1==y1));
+        if(turno == 1){
+            return (x==x1 && y+1==y1);
+        }
+        else{
+            return (x==x1 && y-1==y1);
+        }
     }
 
     @Override
