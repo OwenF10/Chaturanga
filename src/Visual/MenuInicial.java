@@ -130,7 +130,7 @@ public class MenuInicial extends javax.swing.JPanel {
             Menu.userLogged=user.getText();
         }
         else{
-            JOptionPane.showConfirmDialog(Menu.menu, "Usuario o contraseña invalida", "Informacion",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(Menu.menu, "Usuario o contraseña invalida", "Informacion",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_logInMouseClicked
 
@@ -141,7 +141,7 @@ public class MenuInicial extends javax.swing.JPanel {
             Menu.userLogged=user.getText();
         }
         else{
-            JOptionPane.showConfirmDialog(Menu.menu, "Usuario ya existente o contraseña invalida", "Informacion",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(Menu.menu, "Usuario ya existente o contraseña invalida", "Informacion",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_createUserMouseClicked
 
