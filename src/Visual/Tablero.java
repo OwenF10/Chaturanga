@@ -18,7 +18,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -145,5 +144,4 @@ public final class Tablero extends JPanel{
         repaint();
         revalidate();
     }
-    
 }

@@ -4,8 +4,8 @@
  */
 package Visual;
 
-import Chaturanga.Chaturanga;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Owen Figueroa
@@ -99,9 +99,12 @@ public class JugadoresDisponibles extends javax.swing.JPanel {
     private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
         // TODO add your handling code here:
         try{
-            if(Menu.users.login2(jugador2.getText())){
+            if(Menu.users.searchUser2(jugador2.getText(), Menu.userLogged)){
                 Menu.menu.setPanel(new Juego());
                 Menu.userLogged=jugador2.getText();
+            }
+            else{
+                JOptionPane.showMessageDialog(Menu.menu, "Usuario invalido", "Informacion",JOptionPane.ERROR_MESSAGE);
             }
         }catch(Exception e){}
         

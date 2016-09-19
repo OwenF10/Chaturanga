@@ -6,6 +6,7 @@ package Visual;
 
 import Chaturanga.Chaturanga;
 import Chaturanga.Savable;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -18,7 +19,7 @@ public class Menu extends javax.swing.JFrame {
     public static Chaturanga cha = new Chaturanga();
     public static Savable users = new Chaturanga();
     public static Tablero tablero;
-    public static String userLogged, userLogged2;
+    public static String userLogged, userLogged2, path;
     /**
      * Creates new form Menu
      */
@@ -98,6 +99,10 @@ public class Menu extends javax.swing.JFrame {
                 menu.setVisible(true);
             }
         });
+    }
+    
+    public void showMessage(String message){
+        JOptionPane.showMessageDialog(menu, message, "Information", JOptionPane.INFORMATION_MESSAGE);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -125,23 +125,26 @@ public class MenuInicial extends javax.swing.JPanel {
 
     private void logInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logInMouseClicked
         // TODO add your handling code here:
-        if(Menu.users.login(user.getText(), pass.getText())){
+        try{
+        if(Menu.users.Login(user.getText(), pass.getText())){
             Menu.menu.setPanel(new MenuPrincipal());
             Menu.userLogged=user.getText();
         }
-        else{
-            JOptionPane.showMessageDialog(Menu.menu, "Usuario o contraseña invalida", "Informacion",JOptionPane.ERROR_MESSAGE);
+        }catch(Exception e){
+            System.out.println("No deberia pasar");
         }
     }//GEN-LAST:event_logInMouseClicked
 
     private void createUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createUserMouseClicked
         // TODO add your handling code here:
-        if(Menu.users.saveUser(user.getText(), pass.getText())){
-            Menu.menu.setPanel(new MenuPrincipal());
-            Menu.userLogged=user.getText();
+        try{
+            if(Menu.users.saveUser(user.getText(), pass.getText())){
+                Menu.menu.setPanel(new MenuPrincipal());
+                Menu.userLogged=user.getText();
+            }
         }
-        else{
-            JOptionPane.showMessageDialog(Menu.menu, "Usuario ya existente o contraseña invalida", "Informacion",JOptionPane.ERROR_MESSAGE);
+        catch(Exception e){
+            System.out.println("No deberia pasar");
         }
     }//GEN-LAST:event_createUserMouseClicked
 

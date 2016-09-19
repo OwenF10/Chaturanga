@@ -19,8 +19,9 @@ public class MiCuenta extends javax.swing.JPanel {
      * Creates new form MiCuenta
      */
     public MiCuenta() {
+        try{
         initComponents();
-        String[] info = Menu.users.search(Menu.userLogged).toString().split("-");
+        String[] info = Menu.users.search(Menu.userLogged).split("-");
         jLabel1.setText(info[0]);
         jLabel2.setText(info[1]);
         Calendar cal = Calendar.getInstance();
@@ -29,6 +30,9 @@ public class MiCuenta extends javax.swing.JPanel {
         String mes = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.forLanguageTag("es"));
         int año=cal.get(Calendar.YEAR);
         jLabel3.setText(dia+"/"+mes+"/"+año);
+        }catch(Exception e){
+            
+        }
     }
 
     /**
@@ -142,7 +146,9 @@ public class MiCuenta extends javax.swing.JPanel {
 
     private void btnCambiarPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCambiarPasswordMouseClicked
         // TODO add your handling code here:
-        Menu.menu.setPanel(new NuevaPassword());
+        try{
+        Menu.users.changePassword();
+        }catch(Exception e){}
     }//GEN-LAST:event_btnCambiarPasswordMouseClicked
 
     private void btnFacebookMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFacebookMouseClicked
@@ -157,7 +163,9 @@ public class MiCuenta extends javax.swing.JPanel {
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(menu, "PROXIMAMENTE ESTARA DISPONIBLE", "Information", JOptionPane.INFORMATION_MESSAGE);
+        try{
+        Menu.users.deleteUser(Menu.userLogged);
+        }catch(Exception e){}
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnFacebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacebookActionPerformed

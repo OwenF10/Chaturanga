@@ -4,14 +4,21 @@
  */
 package Chaturanga;
 
+import java.io.IOException;
+
 /**
  *
  * @author Owen Figueroa
  */
 public interface Savable {
-    Users search(String user);
-    boolean login(String user, String pass);
-    boolean login2(String user);
-    boolean saveUser(String user, String pass);
-    boolean changePass(String user, String pass, String pass2);
+    boolean searchUser(String u) throws IOException;
+    boolean searchUser2 (String u, String u2) throws IOException;
+    boolean saveUser(String u, String pass) throws IOException;
+    boolean deleteUser(String u) throws IOException;
+    boolean Login(String u, String pass)throws IOException;
+    String search(String u)throws IOException;
+    void changePassword()throws IOException;
+    void listUsers();
+    void saveLogs(String msg);
+    void surrender(int t)throws IOException;   
 }
