@@ -100,8 +100,8 @@ public class JugadoresDisponibles extends javax.swing.JPanel {
         // TODO add your handling code here:
         try{
             if(Menu.users.searchUser2(jugador2.getText(), Menu.userLogged)){
+                Tablero.newGame(jugador2.getText());
                 Menu.menu.setPanel(new Juego());
-                Menu.userLogged=jugador2.getText();
             }
             else{
                 JOptionPane.showMessageDialog(Menu.menu, "Usuario invalido", "Informacion",JOptionPane.ERROR_MESSAGE);

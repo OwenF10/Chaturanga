@@ -20,5 +20,5 @@ public interface Savable {
     void changePassword()throws IOException;
     void listUsers();
     void saveLogs(String msg);
-    void surrender(int t)throws IOException;   
+    void surrender(int t);   
 }

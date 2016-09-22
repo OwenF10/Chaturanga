@@ -93,6 +93,7 @@ public final class Chaturanga implements Savable{
         return false;
     }
     
+    @Override
     public final boolean searchUser2(String u, String u2) throws IOException{
         players.seek(0);
         while(players.getFilePointer()<players.length()){
@@ -338,7 +339,7 @@ public final class Chaturanga implements Savable{
      */
     @Override
     public final void surrender(int t){
-        int confirm = JOptionPane.showConfirmDialog(Menu.menu,  "Seguro?", "Borrar Juego", JOptionPane.YES_NO_CANCEL_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(Menu.menu,  "Seguro?", "Borrar Juego", JOptionPane.YES_NO_OPTION);
         if(confirm == JOptionPane.YES_OPTION){
             String user1 = (t==1 ? Menu.userLogged : Menu.userLogged2);
             String user2 = (t==1 ? Menu.userLogged2 : Menu.userLogged);
@@ -347,6 +348,9 @@ public final class Chaturanga implements Savable{
             addPoints(user2, msg);
             saveLogs(msg);
             Menu.menu.setPanel(new MenuPrincipal());
+        }
+        else{
+            //OPCION NO, QUE NO HAGA NADA
         }
     }
     /**

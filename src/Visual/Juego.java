@@ -4,6 +4,9 @@
  */
 package Visual;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -18,7 +21,7 @@ public class Juego extends javax.swing.JPanel {
      */
     public Juego() {
         initComponents();
-        setTableroPanel(new Tablero());
+        setTableroPanel(Menu.tablero);
     }
     
     public void setTableroPanel(JPanel panel){
@@ -38,6 +41,7 @@ public class Juego extends javax.swing.JPanel {
     private void initComponents() {
 
         tablero = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         fondoLabel = new javax.swing.JLabel();
 
@@ -61,6 +65,21 @@ public class Juego extends javax.swing.JPanel {
         add(tablero);
         tablero.setBounds(300, 30, 600, 600);
 
+        jButton2.setFont(new java.awt.Font("Hobo Std", 0, 24)); // NOI18N
+        jButton2.setText("Salvar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2);
+        jButton2.setBounds(50, 360, 170, 60);
+
         jButton1.setFont(new java.awt.Font("Hobo Std", 0, 24)); // NOI18N
         jButton1.setText("Retirar");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -74,7 +93,7 @@ public class Juego extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(50, 380, 170, 60);
+        jButton1.setBounds(50, 490, 170, 60);
 
         fondoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.png"))); // NOI18N
         add(fondoLabel);
@@ -88,15 +107,26 @@ public class Juego extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        try{
         Menu.users.surrender(Menu.tablero.t);
-        }catch(Exception e){}
+        Menu.menu.setPanel(new MenuPrincipal());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //SAVEGAME TIRA EXCEPTION
+        /*try {
+            Menu.tablero.saveGame();
+        } catch (IOException ex) {}*/
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondoLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel tablero;
     // End of variables declaration//GEN-END:variables
 }

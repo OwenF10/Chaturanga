@@ -18,11 +18,18 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public final class Tablero extends JPanel{
+public final class Tablero extends JPanel implements Serializable{
     public int currentX, currentY, t;
     boolean chosenPiece = false;
     transient Image background = Toolkit.getDefaultToolkit().createImage("src/Imagenes/tablero2.png");
@@ -144,4 +151,45 @@ public final class Tablero extends JPanel{
         repaint();
         revalidate();
     }
+    /*public void endGame(){
+        if(!generalsAlive()){
+            String winner = (t==1 ? Menu.userLogged2 : Menu.userLogged);
+            String loser = (t==1 ? Menu.userLogged : Menu.userLogged2);
+            
+            String victory = winner+" has won the game against "+loser+". "+winner+" has gained 3 points.";
+            
+            new File(Menu.path).delete();
+            Menu.xia.addPoints(winner, victory);
+            Menu.xia.saveLogs(victory);
+            Menu.menu.setPanel(new MenuPrincipal());
+        }
+    }*/
+    
+    public static void newGame(String user) throws IOException{
+        Menu.userLogged2 = user;
+        Menu.path = "Players/"+Menu.userLogged+"/"+Menu.cha.getCode()+"-"+user;
+        FileOutputStream file = new FileOutputStream(Menu.path);
+        Tablero tab = new Tablero();
+        Menu.tablero = tab;        
+        file.close();        
+    }
+    
+    public void saveGame() throws IOException{
+        FileOutputStream fos = new FileOutputStream(Menu.path);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(Menu.tablero);
+        fos.close();
+    }
+    
+    public static Tablero loadGame(String path) throws IOException, ClassNotFoundException{
+        String[] game = path.split("-");
+        Menu.userLogged2 = game[1];
+        String fileName = Menu.cha.getFileName(game);
+        Menu.path = "Players/"+Menu.userLogged+"/"+fileName;
+        FileInputStream file = new FileInputStream(Menu.path);
+        ObjectInputStream data = new ObjectInputStream(file);
+        Tablero tab = (Tablero)data.readObject();        
+        return tab;
+    }
+    
 }
